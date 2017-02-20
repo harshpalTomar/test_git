@@ -3,3 +3,5 @@ Hello
 Change in feature
 
 Changes pushed to remote repo
+
+Changes pushed to remote repo in feature branch
