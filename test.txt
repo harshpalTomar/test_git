@@ -1,5 +1,130 @@
-Hello
+package com.justgetvisible.testscript.login;
 
-Change in feature
+/*********************************************************************************************************************
+'@ Project Name: Selenium Automation Framework
+'@ Module Name: iOS_Script
+'@ Test Case ID: 53
+'@ Test Case Name:  Mobile_Transfer_01_en
+'@ Description: tempTestcaseDescription
+'@ Object Repositories: tempObjectRepositories
+'@ Author :
+'@ Date Of Creation :  18-01-2017 16:35:15
+'@ Status : 
+'*********************************************************************************************************************/
 
-Changes pushed to remote repo
+//------------------------------------ Required imports ------------------------------------//
+
+//---------- Java----------//
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.text.*;
+import java.math.*;
+
+//---------- Selenium----------//
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.*;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.*;
+import io.appium.java_client.ios.*;
+import io.appium.java_client.remote.*;
+
+//---------- TestNG----------//
+import org.testng.annotations.*;
+import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.Reporter;
+
+//---------- XML Parser----------//
+import org.w3c.dom.*;
+import org.xml.sax.*;
+
+import javax.xml.parsers.*;
+
+//---------- SQL----------//
+import java.sql.*;
+
+//---------- Apache POI----------//
+import org.apache.commons.io.FileUtils;
+import org.apache.http.*;
+import org.apache.http.client.HttpClient;
+import org.apache.http.message.BasicHttpEntityEnclosingRequest;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+//---------- Required ApplicationSpecificFunctions----------//
+//import Modules.CHC.Mobile.ApplicationSpecificFunctions.*;
+
+//-----------------------------------------------------------------------------------------//
+
+@SuppressWarnings("unused")
+public class MobileTest {
+
+	//-------------------Local variable decleration---------------------//
+	private String folderPath;
+	private String mstrTC_Name;
+	private String mstrTC_Name_Base;
+	private String mstrTC_Desc;
+	private String mstrModuleName;
+	private String mstrSuiteName;
+	private String mstrTestName;
+	private String mstrNodeIP;
+	private String mstrBrowserName;
+	private int mintRunId;
+	private int rowNumber;
+	private Map<String, String> rowData = null;
+	private String dataFilePath ;
+	private WebDriver webdriver;
+	private WebDriverWait wait;
+	private Exception exception;
+
+	//-------------------Main script definition---------------------//
+
+
+	public void multiDataScript(String udid, String device, String url, String platform, String platformVersion, String browsername) throws Exception{
+
+
+		Set<String> winHandles;
+		Iterator<String> iterHandles;
+		//		HashMap<String, Integer> tapObject = new HashMap<String, Integer>();
+
+		mstrBrowserName=browsername;
+
+		// getting start time of test
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		String startDate = dateFormat.format(date);
+
+
+		try{
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+
+			capabilities.setCapability("platformName", "iOS");
+			capabilities.setCapability("deviceName", "iPhone 5s");
+			capabilities.setCapability("browser", "safari");
+			webdriver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+					capabilities);
+			webdriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+			webdriver.get("http://www.google.com");
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@AfterTest	
+	public void afterClass() throws IOException{
+
+	}
+
+}
