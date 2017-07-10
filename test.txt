@@ -82,36 +82,46 @@ public class MobileTest {
 	private int rowNumber;
 	private Map<String, String> rowData = null;
 	private String dataFilePath ;
-	private WebDriver webdriver;
+
 	private WebDriverWait wait;
 	private Exception exception;
 
 	//-------------------Main script definition---------------------//
 
 
-	public void multiDataScript(String udid, String device, String url, String platform, String platformVersion, String browsername) throws Exception{
+	public void multiDataScript() throws Exception{
 
 
+
+	}
+
+	public static void main(String[] args) {
 		Set<String> winHandles;
 		Iterator<String> iterHandles;
 		//		HashMap<String, Integer> tapObject = new HashMap<String, Integer>();
 
-		mstrBrowserName=browsername;
-
 		// getting start time of test
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		String startDate = dateFormat.format(date);
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
+		WebDriver webdriver;
 
 		try{
-			DesiredCapabilities capabilities = new DesiredCapabilities();
 
-			capabilities.setCapability("platformName", "iOS");
-			capabilities.setCapability("deviceName", "iPhone 5s");
-			capabilities.setCapability("browser", "safari");
-			webdriver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),
-					capabilities);
+			DesiredCapabilities caps = DesiredCapabilities.iphone();
+
+			caps.setCapability("appiumVersion", "1.6");
+			caps.setCapability("deviceName","iPhone 5");
+			caps.setCapability("deviceOrientation", "portrait");
+			caps.setCapability("platformVersion","8.4");
+			caps.setCapability("platformName", "iOS");
+			caps.setCapability("browserName", "safari");
+			//caps.setCapability("app","sauce-storage:mapp.zip");
+			caps.setCapability("name", "Mobile_Test_"+timeStamp);
+
+			webdriver = new IOSDriver(new URL("http://Harshpal1993:a8697dcd-c25d-468f-a602-c5ab1c9c1a14@ondemand.saucelabs.com:80/wd/hub"),
+					caps);
 			webdriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 			webdriver.get("http://www.google.com");
@@ -119,12 +129,7 @@ public class MobileTest {
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-
-	@AfterTest	
-	public void afterClass() throws IOException{
-
+		}	
 	}
 
 }
