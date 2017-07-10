@@ -1,0 +1,8 @@
+DesiredCapabilities caps = DesiredCapabilities.iphone();
+caps.setCapability("appiumVersion", "1.6.4");
+caps.setCapability("deviceName","iPhone 6 Simulator");
+caps.setCapability("deviceOrientation", "portrait");
+caps.setCapability("platformVersion","10.3");
+caps.setCapability("platformName", "iOS");
+caps.setCapability("browserName", "");
+caps.setCapability("app","sauce-storage:app.com");
