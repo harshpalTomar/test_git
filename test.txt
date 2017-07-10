@@ -110,13 +110,12 @@ public class MobileTest {
 		try{
 
 			DesiredCapabilities caps = DesiredCapabilities.iphone();
-
-			caps.setCapability("appiumVersion", "1.6");
-			caps.setCapability("deviceName","iPhone 5");
+			caps.setCapability("appiumVersion", "1.6.4");
+			caps.setCapability("deviceName","iPhone 6 Simulator");
 			caps.setCapability("deviceOrientation", "portrait");
-			caps.setCapability("platformVersion","8.4");
+			caps.setCapability("platformVersion","10.3");
 			caps.setCapability("platformName", "iOS");
-			caps.setCapability("browserName", "safari");
+			caps.setCapability("browserName", "Safari");
 			//caps.setCapability("app","sauce-storage:mapp.zip");
 			caps.setCapability("name", "Mobile_Test_"+timeStamp);
 
